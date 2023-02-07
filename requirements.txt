@@ -2,3 +2,13 @@ leafmap
 urllib3
 requests
 streamlit_option_menu
+pip
+setuptools
+pandas
+streamlit
+geopandas
+streamlit_keplergl
+pandas_datareader==0.10.0
+keplergl
+hydralit_components
+st_click_detector
