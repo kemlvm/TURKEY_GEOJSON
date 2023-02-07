@@ -1,5 +1,4 @@
 pymongo
-pycopy-urllib.parse
 leafmap
 urllib3
 requests
