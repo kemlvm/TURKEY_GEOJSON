@@ -1,3 +1,4 @@
+pymongo
 leafmap
 urllib3
 requests
