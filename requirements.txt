@@ -1,3 +1,3 @@
-pip
-pandas
-streamlit
+jsonlib
+requests
+pandas_datareader==0.10.0
