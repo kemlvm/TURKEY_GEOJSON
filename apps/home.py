@@ -11,6 +11,7 @@ import csv
 import pandas as pd
 import pymongo
 from urllib.parse import quote_plus
+import time
 
 def app():
 
@@ -64,9 +65,10 @@ def app():
                 mydb = client["TURKEYGEOJSON"]
                 mycol = mydb["kandilli"]
 
-                myquery = { "github": "https://github.com/emirkabal/deprem-api" }
+                x = mycol.delete_many({})
 
-                mycol.delete_one(myquery)
+                st.write(x.deleted_count, " documents deleted.")
+                time.sleep(1)
 
                 routerDataForInsert = mycol.insert_one(result)
 
@@ -91,6 +93,11 @@ def app():
 
                 mydb = client["TURKEYGEOJSON"]
                 mycol = mydb["afad"]
+
+                x = mycol.delete_many({})
+
+                st.write(x.deleted_count, " documents deleted.")
+                time.sleep(1)
 
                 routerDataForInsert = mycol.insert_one(result)
                 
