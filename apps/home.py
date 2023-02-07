@@ -1,17 +1,17 @@
 import streamlit as st
 import leafmap.foliumap as leafmap
-from st_click_detector import click_detector
 import hydralit_components as hc
 from streamlit_keplergl import keplergl_static
 from keplergl import KeplerGl
 import math
 from Data.List import lists
-from getRequest import *
 import requests
 import json
 import csv
-from streamlit_option_menu import option_menu
-from apps import readEarthquake
+import pymongo
+from urllib.parse import quote_plus
+import pandas as pd
+
 
 
 def app():
@@ -57,21 +57,21 @@ def app():
                 collect = getJsonData
                 result = fruits(collect)
 
-                df = pd.DataFrame(result['earthquakes'])
+                username = quote_plus('eukqla')
+                password = quote_plus('mQCtaLqW@yNY!8?-/prot?=ocO*l')
+                uri = 'mongodb+srv://' + username + ':' + password + '@cluster0.brz7ehs.mongodb.net/?retryWrites=true&w=majority'
+                client = pymongo.MongoClient(uri)
 
-                data_file = open('kandilli_dataFile.csv', 'w',
-                                 newline='', encoding="utf-8")
-                csv_writer = csv.writer(data_file)
+                mydb = client["TURKEYGEOJSON"]
+                mycol = mydb["kandilli"]
 
-                count = 0
-                for data in result['earthquakes']:
-                    if count == 0:
-                        header = data.keys()
-                        csv_writer.writerow(header)
-                        count += 1
-                    csv_writer.writerow(data.values())
+                routerDataForInsert = mycol.insert_one(result)
 
-                data_file.close()
+                routerDataForFindAndUse = mycol.find_one()
+
+                df_forKandilli = pd.DataFrame(routerDataForFindAndUse['earthquakes'])
+
+                st.write(df_forKandilli)
 
             def GetParamsData_ForAfad(req):
                 api = req
@@ -86,21 +86,21 @@ def app():
                 collect = getJsonData
                 result = fruits(collect)
 
-                df = pd.DataFrame(result['earthquakes'])
+                username = quote_plus('eukqla')
+                password = quote_plus('mQCtaLqW@yNY!8?-/prot?=ocO*l')
+                uri = 'mongodb+srv://' + username + ':' + password + '@cluster0.brz7ehs.mongodb.net/?retryWrites=true&w=majority'
+                client = pymongo.MongoClient(uri)
 
-                data_file = open('afad_dataFile.csv', 'w',
-                                 newline='', encoding="utf-8")
-                csv_writer = csv.writer(data_file)
+                mydb = client["TURKEYGEOJSON"]
+                mycol = mydb["afad"]
 
-                count = 0
-                for data in result['earthquakes']:
-                    if count == 0:
-                        header = data.keys()
-                        csv_writer.writerow(header)
-                        count += 1
-                    csv_writer.writerow(data.values())
+                routerDataForInsert = mycol.insert_one(result)
 
-                data_file.close()
+                routerDataForFindAndUse = mycol.find_one()
+
+                df_forAFAD = pd.DataFrame(routerDataForFindAndUse['earthquakes'])
+
+                st.write(df_forAFAD)
 
             GetParamsData_ForAfad("https://deprem-api.vercel.app/?type=afad")
             GetParamsData_ForKandilli("https://deprem-api.vercel.app/")
