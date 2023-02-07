@@ -64,6 +64,10 @@ def app():
                 mydb = client["TURKEYGEOJSON"]
                 mycol = mydb["kandilli"]
 
+                myquery = { "github": "https://github.com/emirkabal/deprem-api" }
+
+                mycol.delete_one(myquery)
+
                 routerDataForInsert = mycol.insert_one(result)
 
 
