@@ -57,9 +57,10 @@ def app():
                 collect = getJsonData
                 result = fruits(collect)
 
-                df = pd.DataFrame(result['earthquakes'])
+                df_kandilli = pd.DataFrame(result['earthquakes'])
 
-                return df
+                print(df_kandilli)
+                st.write(df_kandilli)
 
             def GetParamsData_ForAfad(req):
                 api = req
@@ -75,7 +76,8 @@ def app():
                 result = fruits(collect)
 
                 df_afad = pd.DataFrame(result['earthquakes'])
-                return df_afad
+                print(df_afad)
+                st.write(df_afad)
 
         ticker = st.sidebar.selectbox(
             'API Parametresi Seçiniz!', sorted(lists.param), index=0)
@@ -87,7 +89,6 @@ def app():
                     f"{new_ticker} Ulaştığımız Son 500 Depreme Ait Veriler")
 
                 GetParamsData_ForKandilli("https://deprem-api.vercel.app/")
-                st.dataframe(df, use_container_width=1000)
 
             st.subheader(
                 f"{new_ticker} Tarafından Ulaştığımız Son 100 Depreme Ait Veriler Şu Anda Tam Zamanlı Olarak Veri Görselleştirilmesi Yapılıyor!")
@@ -121,7 +122,6 @@ def app():
 
                 GetParamsData_ForAfad(
                     "https://deprem-api.vercel.app/?type=afad")
-                st.dataframe(df_afad, use_container_width=1000)
 
             st.subheader(
                 f"{new_ticker} Tarafından Ulaştığımız Son 100 Depreme Ait Veriler Şu Anda Tam Zamanlı Olarak Veri Görselleştirilmesi Yapılıyor!")
