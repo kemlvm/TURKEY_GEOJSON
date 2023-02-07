@@ -3,7 +3,7 @@ pandas
 streamlit
 datetime
 jsonlib
-csv
+python-csv
 math
 requests
 pandas_datareader==0.10.0
