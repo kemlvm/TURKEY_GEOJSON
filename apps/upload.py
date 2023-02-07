@@ -44,7 +44,7 @@ def app():
             import leafmap.deck as leafmap
 
         url = st.text_input(
-            "Verikümesi Vektörünun Bulunduğu Bir URL Giriniz! \n Aktif Kurulu Türkiye GeoJson Vektörleri Bulunmakta! \n https://raw.githubusercontent.com/kemlvm/TURKEY_GEOJSON/main/turkey.geojson",
+            "Verikümesi Vektörünun Bulunduğu Bir URL Giriniz! \n Aktif Kurulu Türkiye GeoJson Vektörleri Bulunmakta! \n https://raw.githubusercontent.com/kemlvm/TURKEY_GEOJSON/main/turkey.geojson?token=GHSAT0AAAAAAB6O4V5OI4ZWNXV6XXBQJUTGY7CTLHA",
             "https://raw.githubusercontent.com/kemlvm/TURKEY_GEOJSON/main/turkey.geojson?token=GHSAT0AAAAAAB6O4V5OI4ZWNXV6XXBQJUTGY7CTLHA",
         )
 
