@@ -11,7 +11,7 @@ import requests
 import json
 import csv
 from streamlit_option_menu import option_menu
-from apps import readEarthquake
+from pages import readEarthquake
 
 
 def app():
@@ -57,10 +57,21 @@ def app():
                 collect = getJsonData
                 result = fruits(collect)
 
-                df_kandilli = pd.DataFrame(result['earthquakes'])
+                df = pd.DataFrame(result['earthquakes'])
 
-                print(df_kandilli)
-                st.write(df_kandilli)
+                data_file = open('kandilli_dataFile.csv', 'w',
+                                 newline='', encoding="utf-8")
+                csv_writer = csv.writer(data_file)
+
+                count = 0
+                for data in result['earthquakes']:
+                    if count == 0:
+                        header = data.keys()
+                        csv_writer.writerow(header)
+                        count += 1
+                    csv_writer.writerow(data.values())
+
+                data_file.close()
 
             def GetParamsData_ForAfad(req):
                 api = req
@@ -75,9 +86,24 @@ def app():
                 collect = getJsonData
                 result = fruits(collect)
 
-                df_afad = pd.DataFrame(result['earthquakes'])
-                print(df_afad)
-                st.write(df_afad)
+                df = pd.DataFrame(result['earthquakes'])
+
+                data_file = open('afad_dataFile.csv', 'w',
+                                 newline='', encoding="utf-8")
+                csv_writer = csv.writer(data_file)
+
+                count = 0
+                for data in result['earthquakes']:
+                    if count == 0:
+                        header = data.keys()
+                        csv_writer.writerow(header)
+                        count += 1
+                    csv_writer.writerow(data.values())
+
+                data_file.close()
+
+            GetParamsData_ForAfad("https://deprem-api.vercel.app/?type=afad")
+            GetParamsData_ForKandilli("https://deprem-api.vercel.app/")
 
         ticker = st.sidebar.selectbox(
             'API Parametresi Seçiniz!', sorted(lists.param), index=0)
@@ -88,7 +114,7 @@ def app():
                 st.header(
                     f"{new_ticker} Ulaştığımız Son 500 Depreme Ait Veriler")
 
-                GetParamsData_ForKandilli("https://deprem-api.vercel.app/")
+            st.dataframe(kandilli_pd_param, use_container_width=1000)
 
             st.subheader(
                 f"{new_ticker} Tarafından Ulaştığımız Son 100 Depreme Ait Veriler Şu Anda Tam Zamanlı Olarak Veri Görselleştirilmesi Yapılıyor!")
@@ -120,8 +146,7 @@ def app():
                 st.header(
                     f"{new_ticker} Tarafından Ulaştığımız Son 100 Depreme Ait Veriler")
 
-                GetParamsData_ForAfad(
-                    "https://deprem-api.vercel.app/?type=afad")
+            st.dataframe(afad_pd_param, use_container_width=1000)
 
             st.subheader(
                 f"{new_ticker} Tarafından Ulaştığımız Son 100 Depreme Ait Veriler Şu Anda Tam Zamanlı Olarak Veri Görselleştirilmesi Yapılıyor!")
