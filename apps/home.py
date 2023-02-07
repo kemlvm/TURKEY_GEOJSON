@@ -115,10 +115,7 @@ def app():
             routerDataForFindAndUseKandilli = mycol.find_one()
 
             df_forKandilli = pd.DataFrame(routerDataForFindAndUseKandilli['earthquakes'])
-
-            st.dataframe(df_forKandilli, use_container_width=1000
-
-            #st.dataframe(df_forKandilli, use_container_width=1000)
+            st.dataframe(df_forKandilli, use_container_width=1000)
 
             st.subheader(
                 f"{new_ticker} Tarafından Ulaştığımız Son 100 Depreme Ait Veriler Şu Anda Tam Zamanlı Olarak Veri Görselleştirilmesi Yapılıyor!")
@@ -161,10 +158,8 @@ def app():
             routerDataForFindAndUse = mycol.find_one()
 
             df_forAFAD = pd.DataFrame(routerDataForFindAndUse['earthquakes'])
-            
-            st.dataframe(df_forAFAD, use_container_width=1000)
 
-            #st.dataframe(df_forAFAD, use_container_width=1000)
+            st.dataframe(df_forAFAD, use_container_width=1000)
 
             st.subheader(
                 f"{new_ticker} Tarafından Ulaştığımız Son 100 Depreme Ait Veriler Şu Anda Tam Zamanlı Olarak Veri Görselleştirilmesi Yapılıyor!")
