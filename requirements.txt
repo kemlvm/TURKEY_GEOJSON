@@ -1,3 +1,4 @@
+--find-links=https://github.com/andfanilo/streamlit-component-template-vue
 pip
 pandas
 streamlit
