@@ -117,7 +117,8 @@ def app():
                 st.header(
                     f"{new_ticker} Tarafından Ulaştığımız Son 100 Depreme Ait Veriler")
 
-            GetParamsData_ForAfad("https://deprem-api.vercel.app/?type=afad")
+                GetParamsData_ForAfad(
+                    "https://deprem-api.vercel.app/?type=afad")
 
             st.subheader(
                 f"{new_ticker} Tarafından Ulaştığımız Son 100 Depreme Ait Veriler Şu Anda Tam Zamanlı Olarak Veri Görselleştirilmesi Yapılıyor!")
