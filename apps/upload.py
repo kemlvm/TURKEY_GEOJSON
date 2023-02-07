@@ -45,7 +45,7 @@ def app():
 
         url = st.text_input(
             "Verikümesi Vektörünun Bulunduğu Bir URL Giriniz! \n Aktif Kurulu Türkiye GeoJson Vektörleri Bulunmakta! \n https://raw.githubusercontent.com/kemlvm/TURKEY_GEOJSON/main/turkey.geojson",
-            "https://raw.githubusercontent.com/kemlvm/TURKEY_GEOJSON/main/turkey.geojson",
+            "https://raw.githubusercontent.com/kemlvm/TURKEY_GEOJSON/main/turkey.geojson?token=GHSAT0AAAAAAB6O4V5OI4ZWNXV6XXBQJUTGY7CTLHA",
         )
 
         data = st.file_uploader(
