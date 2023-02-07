@@ -9,4 +9,5 @@ requests
 pandas_datareader==0.10.0
 geopandas
 streamlit_keplergl
-keplergl
+
+leafmap
