@@ -1,3 +1,4 @@
 leafmap
 urllib3
 requests
+streamlit_option_menu
