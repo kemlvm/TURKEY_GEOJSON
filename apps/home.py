@@ -116,8 +116,7 @@ def app():
 
             df_forKandilli = pd.DataFrame(routerDataForFindAndUseKandilli['earthquakes'])
 
-            if(df_forKandilli):
-                print("bisiler oluyo")
+            st.dataframe(df_forKandilli, use_container_width=1000
 
             #st.dataframe(df_forKandilli, use_container_width=1000)
 
@@ -162,9 +161,8 @@ def app():
             routerDataForFindAndUse = mycol.find_one()
 
             df_forAFAD = pd.DataFrame(routerDataForFindAndUse['earthquakes'])
-
-            if(df_forAFAD):
-                print("bisiler oluyo")
+            
+            st.dataframe(df_forAFAD, use_container_width=1000)
 
             #st.dataframe(df_forAFAD, use_container_width=1000)
 
