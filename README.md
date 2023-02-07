@@ -1,4 +1,1 @@
-"# axvoice" 
 "# TurkiyeVeriAkis" 
-# TurkiyeVeriAkis
-# TurkeyDataArea
