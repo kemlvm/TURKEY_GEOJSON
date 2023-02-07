@@ -5,7 +5,7 @@ import leafmap.foliumap as leafmap
 def app():
     st.title("Isı Haritası")
 
-    filepath = "https://raw.githubusercontent.com/kemlvm/TURKEY_GEOJSON/main/tr_cities.csv?token=GHSAT0AAAAAAB6O4V5O47UVQMJ7QGGTPZB2Y7CTKWQ"
+    filepath = "https://raw.githubusercontent.com/kemlvm/TURKEY_GEOJSON/main/tr_cities.csv?token=GHSAT0AAAAAAB6O4V5P7BURYWQHEXIWVYWIY7CTVIQ"
     m = leafmap.Map(tiles="stamentoner")
     m.add_heatmap(
         filepath,
