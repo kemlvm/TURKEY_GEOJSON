@@ -2,7 +2,7 @@ pip
 pandas
 streamlit
 datetime
-json
+jsonlib
 csv
 math
 requests
