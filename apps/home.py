@@ -11,7 +11,7 @@ import requests
 import json
 import csv
 from streamlit_option_menu import option_menu
-from pages import readEarthquake
+from apps import readEarthquake
 
 
 def app():
