@@ -1,14 +1,1 @@
---find-links=https://github.com/andfanilo/streamlit-component-template-vue
-pip
-pandas
-streamlit
-datetime
-jsonlib
-requests
-pandas_datareader==0.10.0
-geopandas
-streamlit_keplergl
-keplergl
-leafmap
-hydralit_components
-st_click_detector
+
