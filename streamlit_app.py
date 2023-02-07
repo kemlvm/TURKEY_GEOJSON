@@ -1,7 +1,6 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
-from apps import ForCitiesRealTimeData, home, heatmap, upload
-from pages import readEarthquake
+from apps import ForCitiesRealTimeData, home, heatmap, upload,readEarthquake
 
 st.set_page_config(page_title="Canlı Veri Akışı", layout="wide")
 
