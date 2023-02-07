@@ -8,13 +8,11 @@ from Data.List import lists
 import requests
 import json
 import csv
-import pymongo
-from urllib.parse import quote_plus
 import pandas as pd
 
-
-
 def app():
+    import pymongo
+    from urllib.parse import quote_plus
     menu_data = [
         {'icon': "🌏", 'label': "Tam Zamanlı Veri Akışı"},
         {'icon': "⛈️", 'label': "Tüm Depremlerin Harita Gösterimi"},
