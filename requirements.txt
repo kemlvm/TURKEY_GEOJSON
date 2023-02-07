@@ -12,5 +12,4 @@ keplergl
 leafmap
 hydralit_components
 st_click_detector
-streamlit_option_menu
-webbrowser
+streamlit-option-menu
