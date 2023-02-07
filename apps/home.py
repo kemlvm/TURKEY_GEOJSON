@@ -146,8 +146,6 @@ def app():
                 st.header(
                     f"{new_ticker} Tarafından Ulaştığımız Son 100 Depreme Ait Veriler")
 
-            st.dataframe(afad_pd_param, use_container_width=1000)
-
             st.subheader(
                 f"{new_ticker} Tarafından Ulaştığımız Son 100 Depreme Ait Veriler Şu Anda Tam Zamanlı Olarak Veri Görselleştirilmesi Yapılıyor!")
 
