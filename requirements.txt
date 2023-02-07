@@ -1,16 +1,3 @@
-pip
-setuptools
-pandas
-streamlit
-datetime
-jsonlib
-python-csv
-requests
-pandas_datareader==0.10.0
-geopandas
-streamlit_keplergl
-keplergl
-leafmap
 hydralit_components
 st_click_detector
 streamlit-option-menu
