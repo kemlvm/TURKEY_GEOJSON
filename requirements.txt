@@ -13,4 +13,3 @@ leafmap
 hydralit_components
 st_click_detector
 streamlit-option-menu
---upgrade pip
