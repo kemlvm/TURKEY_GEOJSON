@@ -4,7 +4,6 @@ streamlit
 datetime
 jsonlib
 python-csv
-math
 requests
 pandas_datareader==0.10.0
 geopandas
