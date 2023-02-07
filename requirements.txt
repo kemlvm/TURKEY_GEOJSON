@@ -2,9 +2,7 @@ pip
 pandas
 streamlit
 datetime
-json
-csv
-math
+jsonlib
 requests
 pandas_datareader==0.10.0
 geopandas
