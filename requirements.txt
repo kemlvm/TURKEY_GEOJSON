@@ -1,3 +1,13 @@
+pip
+setuptools
+pandas
+streamlit
+geopandas
+streamlit_keplergl
+requests
+pandas_datareader==0.10.0
+keplergl
+leafmap
 hydralit_components
 st_click_detector
 streamlit_option_menu
