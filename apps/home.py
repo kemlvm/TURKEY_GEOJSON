@@ -9,10 +9,11 @@ import requests
 import json
 import csv
 import pandas as pd
+import pymongo
+from urllib.parse import quote_plus
 
 def app():
-    import pymongo
-    from urllib.parse import quote_plus
+
     menu_data = [
         {'icon': "🌏", 'label': "Tam Zamanlı Veri Akışı"},
         {'icon': "⛈️", 'label': "Tüm Depremlerin Harita Gösterimi"},
@@ -65,8 +66,6 @@ def app():
 
                 routerDataForInsert = mycol.insert_one(result)
 
-                if(routerDataForInsert):
-                    st.write("Kayıt yeniledi for kandilli")
 
             def GetParamsData_ForAfad(req):
                 api = req
@@ -90,13 +89,11 @@ def app():
                 mycol = mydb["afad"]
 
                 routerDataForInsert = mycol.insert_one(result)
-
-                if(routerDataForInsert):
-                    st.write("Kayıt yeniledi for afad")
                 
 
-            GetParamsData_ForAfad("https://deprem-api.vercel.app/?type=afad")
             GetParamsData_ForKandilli("https://deprem-api.vercel.app/")
+            GetParamsData_ForAfad("https://deprem-api.vercel.app/?type=afad")
+
 
         ticker = st.sidebar.selectbox(
             'API Parametresi Seçiniz!', sorted(lists.param), index=0)
@@ -119,7 +116,10 @@ def app():
 
             df_forKandilli = pd.DataFrame(routerDataForFindAndUseKandilli['earthquakes'])
 
-            st.dataframe(df_forKandilli, use_container_width=1000)
+            if(df_forKandilli):
+                print("bisiler oluyo")
+
+            #st.dataframe(df_forKandilli, use_container_width=1000)
 
             st.subheader(
                 f"{new_ticker} Tarafından Ulaştığımız Son 100 Depreme Ait Veriler Şu Anda Tam Zamanlı Olarak Veri Görselleştirilmesi Yapılıyor!")
@@ -163,7 +163,10 @@ def app():
 
             df_forAFAD = pd.DataFrame(routerDataForFindAndUse['earthquakes'])
 
-            st.dataframe(df_forAFAD, use_container_width=1000)
+            if(df_forAFAD):
+                print("bisiler oluyo")
+
+            #st.dataframe(df_forAFAD, use_container_width=1000)
 
             st.subheader(
                 f"{new_ticker} Tarafından Ulaştığımız Son 100 Depreme Ait Veriler Şu Anda Tam Zamanlı Olarak Veri Görselleştirilmesi Yapılıyor!")
