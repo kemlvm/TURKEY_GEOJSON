@@ -65,11 +65,8 @@ def app():
 
                 routerDataForInsert = mycol.insert_one(result)
 
-                routerDataForFindAndUse = mycol.find_one()
-
-                df_forKandilli = pd.DataFrame(routerDataForFindAndUse['earthquakes'])
-
-                st.write(df_forKandilli)
+                if(routerDataForInsert):
+                    st.write("Kayıt yeniledi for kandilli")
 
             def GetParamsData_ForAfad(req):
                 api = req
@@ -94,11 +91,9 @@ def app():
 
                 routerDataForInsert = mycol.insert_one(result)
 
-                routerDataForFindAndUse = mycol.find_one()
-
-                df_forAFAD = pd.DataFrame(routerDataForFindAndUse['earthquakes'])
-
-                st.write(df_forAFAD)
+                if(routerDataForInsert):
+                    st.write("Kayıt yeniledi for afad")
+                
 
             GetParamsData_ForAfad("https://deprem-api.vercel.app/?type=afad")
             GetParamsData_ForKandilli("https://deprem-api.vercel.app/")
@@ -112,7 +107,19 @@ def app():
                 st.header(
                     f"{new_ticker} Ulaştığımız Son 500 Depreme Ait Veriler")
 
-            st.dataframe(kandilli_pd_param, use_container_width=1000)
+            username = quote_plus('eukqla')
+            password = quote_plus('mQCtaLqW@yNY!8?-/prot?=ocO*l')
+            uri = 'mongodb+srv://' + username + ':' + password + '@cluster0.brz7ehs.mongodb.net/?retryWrites=true&w=majority'
+            client = pymongo.MongoClient(uri)
+
+            mydb = client["TURKEYGEOJSON"]
+            mycol = mydb["kandilli"]
+
+            routerDataForFindAndUseKandilli = mycol.find_one()
+
+            df_forKandilli = pd.DataFrame(routerDataForFindAndUseKandilli['earthquakes'])
+
+            st.dataframe(df_forKandilli, use_container_width=1000)
 
             st.subheader(
                 f"{new_ticker} Tarafından Ulaştığımız Son 100 Depreme Ait Veriler Şu Anda Tam Zamanlı Olarak Veri Görselleştirilmesi Yapılıyor!")
@@ -133,7 +140,7 @@ def app():
             map_1 = KeplerGl(height=900)
             map_1.config = config
             map_1.add_data(
-                data=kandilli_pd_param, name="cities"
+                data=df_forKandilli, name="cities"
             )  # Alternative: KeplerGl(height=400, data={"name": df})
 
             keplergl_static(map_1, center_map=True)
