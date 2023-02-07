@@ -43,9 +43,7 @@ def app():
         elif backend == "pydeck":
             import leafmap.deck as leafmap
 
-        url = st.text_input(
-            "https://raw.githubusercontent.com/kemlvm/TURKEY_GEOJSON/main/turkey.geojson?token=GHSAT0AAAAAAB6O4V5PMXG6GZFXQYENQYQAY7CTUXA",
-        )
+        url = "https://raw.githubusercontent.com/kemlvm/TURKEY_GEOJSON/main/turkey.geojson?token=GHSAT0AAAAAAB6O4V5PMXG6GZFXQYENQYQAY7CTUXA"
 
         data = st.file_uploader(
             "Bir vektör veri kümesi yükleyin", type=["geojson", "kml", "zip", "tab"]
