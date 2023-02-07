@@ -1,4 +1,3 @@
 leafmap
-urllib
 urllib3
 requests
